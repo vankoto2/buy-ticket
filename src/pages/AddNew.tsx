@@ -19,10 +19,7 @@ const AddNew = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const blog = {};
-
     setIsPendig(true);
-    console.log(blog);
 
     await addDoc(collection(db, "events"), {
       key: Math.random(),
@@ -41,7 +38,7 @@ const AddNew = () => {
   };
 
   return (
-    <div className="grid place-items-center px-5 py-5">
+    <div className="grid place-items-center px-5 pt-5 pb-10">
       <form className="w-full max-w-sm" onSubmit={handleSubmit}>
         <div className="flex items-center mb-6">
           <div className="w-1/3">
@@ -233,7 +230,7 @@ const AddNew = () => {
             {isPendig && (
               <button
                 disabled
-                className="shadow bg-orange hover:bg-red-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                className="shadow bg-orange pb-15 hover:bg-red-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                 type="button"
               >
                 Create

@@ -9,7 +9,7 @@ import EventDetails from "../components/helper/EventDetails";
 
 const EventInfo = (props: {
   events: {
-    id?:  React.Key | null | undefined | number | string;
+    id?: React.Key | null | undefined | number | string;
     title?: string;
     time?: string;
     date?: string;
@@ -24,7 +24,6 @@ const EventInfo = (props: {
 
   const navigate = useNavigate();
 
-  
   const paramsObj = useParams();
   const params = paramsObj.eventId;
   const componentRef = useRef();
@@ -32,17 +31,12 @@ const EventInfo = (props: {
     content: () => componentRef.current,
   });
 
-  const test = props.events.filter(event => {
-    
-    return event.id == params
-  })
+  const test = props.events.filter((event) => {
+    return event.id == params;
+  });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
-    const blog = {};
-
-    console.log(blog);
 
     await addDoc(collection(db, "wish-list"), {
       key: Math.random(),
@@ -54,16 +48,11 @@ const EventInfo = (props: {
       price: test[0].price,
       ticketСeller: test[0].ticketСeller,
       picture: test[0].picture,
-      numberOfTikets
+      numberOfTikets,
     });
 
     navigate("/events");
   };
-  
-  
-
-
-  
 
   return (
     <>
@@ -78,8 +67,9 @@ const EventInfo = (props: {
           location={test[0].location}
         ></EventDetails>
       </div>
-      <div className="container grid grid-cols-6">
-      <div className="flex items-center mb-6">
+      <div className=" grid place-items-center px-5 py-5">
+
+        <div className="flex items-center mb-6">
           <div className="w-1/3">
             <label
               className="block text-gray-500 font-bold text-left mb-1 pr-4"
@@ -100,7 +90,12 @@ const EventInfo = (props: {
             />
           </div>
         </div>
-        <button onClick={handleSubmit} className="col-start-3 col-end-3 place-self-center px-4 py-1 text-sm text-orange font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-orange hover:border-transparent focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2">
+        </div>
+      <div className="container grid grid-cols-6">
+        <button
+          onClick={handleSubmit}
+          className="col-start-3 col-end-3 place-self-center px-4 py-1 text-sm text-orange font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-orange hover:border-transparent focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
+        >
           Add
         </button>
         <button

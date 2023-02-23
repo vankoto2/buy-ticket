@@ -36,7 +36,6 @@ const Events: React.FC<EventsListProps> = (props) => {
       return event.category == category;
     });
     setEventsData(test);
-    console.log(test);
   }, [category]);
 
   useEffect(() => {
@@ -48,26 +47,11 @@ const Events: React.FC<EventsListProps> = (props) => {
       return event.title == title;
     });
     setEventsData(test);
-    console.log(test);
   }, [title]);
-
-  // const test = props.events.filter((event) => {
-  //   if (category === "0") {
-  //     return props.events;
-  //   }
-  //   if (title === "") {
-  //     return props.events;
-  //   }
-  //   if (category === "All") {
-  //     return props.events;
-  //   }
-
-  //   return event.category == category;
-  // });
 
   return (
     <Fragment>
-      <div className="container grid-cols-8 items-center flex justify-evenly">
+      <div className="container grid-cols-8 items-center flex justify-evenly pt-5">
         <h1 className="col-start-2 col-end-8 pb-4 text-2xl font-bold text-center">
           Events
         </h1>
@@ -124,7 +108,7 @@ const Events: React.FC<EventsListProps> = (props) => {
         </div>
       </div>
 
-      <div className="grid sm: grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid sm: grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-10">
         {eventsData.map((event) => (
           <Event
             key={event.id}

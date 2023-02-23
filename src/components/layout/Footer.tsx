@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="w-full h-12 bg-[#fafafa] container flex items-center justify-evenly px-8 fixed bottom-0 ">
+    <div className="w-full h-8 bg-[#fafafa] container flex items-center justify-evenly px-8 fixed bottom-0 ">
       <NavLink
         to="/events"
         className={({ isActive }) => (isActive ? "fill-orange" : "fill-black")}

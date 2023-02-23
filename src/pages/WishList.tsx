@@ -48,7 +48,7 @@ const WishList = () => {
   console.log(eventsData);
   return (
     <>
-      <div  ref={componentRef}>
+      <div ref={componentRef}>
         {eventsData.map((event) => (
           <EventDetails
             id={event.id}
@@ -62,13 +62,14 @@ const WishList = () => {
           ></EventDetails>
         ))}
       </div>
-
-      <button
-        onClick={handlePrint}
-        className="col-start-4 col-end-4 place-self-center px-4 py-1 text-sm text-orange font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-orange hover:border-transparent focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
-      >
-        Print
-      </button>
+      <div className="grid place-content-center w-full pb-10">
+        <button
+          onClick={handlePrint}
+          className="col-start-4 col-end-4   justify-self-center px-4 py-1 text-sm text-orange font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-orange hover:border-transparent focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
+        >
+          Print
+        </button>
+      </div>
     </>
   );
 };
