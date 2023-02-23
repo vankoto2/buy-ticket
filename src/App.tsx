@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Navigation from "./components/layout/Navigation";
@@ -9,6 +9,26 @@ import Login from "./pages/Login";
 import "./App.css";
 import Footer from "./components/layout/Footer";
 import EventInfo from "./pages/EventInfo";
+import {
+  collection,
+  onSnapshot,
+  query,
+} from "firebase/firestore";
+import { db } from "./firebase";
+
+interface EventsListProps {
+  events: {
+    id: number;
+    title: string;
+    time: string;
+    date: string;
+    picture: string;
+    price: number;
+    location: string;
+    user: string;
+    ticketСeller: string;
+  }[];
+}
 
 const mockData: {
   id: number;
@@ -40,7 +60,8 @@ const mockData: {
     title: "Disneyland ",
     date: "20.04.2023",
     time: "13:00",
-    picture: "https://mickeyvisit.com/wp-content/uploads/2022/06/disneyland-after-dark-events.jpg",
+    picture:
+      "https://mickeyvisit.com/wp-content/uploads/2022/06/disneyland-after-dark-events.jpg",
     price: 150,
     location: "Burgas",
     isActive: true,
@@ -89,6 +110,29 @@ const mockData: {
 ];
 
 const App: React.FC = () => {
+  const [eventsData, setEventsData] = useState([{}]);
+  // Create events
+  // Read events from firebase
+  useEffect(() => {
+    const q = query(collection(db, "events"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let eventsArr: {
+        id: string;
+      }[] = [];
+      querySnapshot.forEach((doc) => {
+        eventsArr.push({
+          ...doc.data(),
+          id: doc.id,
+        });
+      });
+      console.log(eventsArr);
+      setEventsData(eventsArr);
+    });
+    return () => unsubscribe();
+  }, []);
+  // Update events in firebase
+  // Delete events
+
   return (
     <div className="App container mx-auto w-full">
       <Navigation />

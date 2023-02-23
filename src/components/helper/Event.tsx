@@ -10,6 +10,7 @@ const Event = (props: {
   price: number;
   location: string;
   user: string;
+  ticketСeller: string;
 }) => {
   return (
     <div key={props.id} className="grid place-items-center px-4 pt-4 pb-10">

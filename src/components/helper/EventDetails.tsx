@@ -1,8 +1,8 @@
 import React from "react";
-import Time from "../svg/clock-icon.svg";
-import Date from "../svg/schedule-calendar-icon.svg";
-import Location from "../svg/location-svgrepo-com.svg";
-import Price from "../svg/usd-icon.svg";
+import Time from "../../svg/clock-icon.svg";
+import Date from "../../svg/schedule-calendar-icon.svg";
+import Location from "../../svg/location-svgrepo-com.svg";
+import Price from "../../svg/usd-icon.svg";
 
 const EventDetails = (props: {
   id: number;

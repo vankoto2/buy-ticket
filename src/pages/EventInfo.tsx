@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 
 import { useReactToPrint } from "react-to-print";
-import EventDetails from "../helper/EventDetails";
+import EventDetails from "../components/helper/EventDetails";
 
 const EventInfo = (props: {
   events: {
@@ -39,7 +39,7 @@ const EventInfo = (props: {
       </div>
       <div className="container grid grid-cols-6">
         <button className="col-start-3 col-end-3 place-self-center px-4 py-1 text-sm text-orange font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-orange hover:border-transparent focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2">
-          Add to list
+          Add
         </button>
         <button
           onClick={handlePrint}
