@@ -17,7 +17,7 @@ import {
 import { db } from "./firebase";
 
 interface EventsListProps {
-  id?: number;
+  id?: number | string;
   title?: string;
   time?: string;
   date?: string;
@@ -25,9 +25,32 @@ interface EventsListProps {
   price?: number;
   location?: string;
   user?: string;
-  ticketСeller?: string; 
+  ticketСeller?: string;
+  category?: string;
+  
 }
-
+const mockData: {
+  id?: number | string;
+  title?: string;
+  time?: string;
+  date?: string;
+  picture?: string;
+  price?: number;
+  location?: string;
+  user?: string;
+  ticketСeller?: string;
+  category: string;
+}[] = [{
+category: "Other",
+date: "22.04.2023",
+id: "123456789",
+location: "USA",
+picture: "https://mickeyvisit.com/wp-content/uploads/2022/06/disneyland-after-dark-events.jpg",
+price: 1000,
+ticketСeller: "Vanko",
+time: "20:00",
+title: "Disneyland",
+}]    
 const App: React.FC = () => {
   const [eventsData, setEventsData] = useState<EventsListProps[]>([]);
   // Create events
@@ -42,8 +65,10 @@ const App: React.FC = () => {
           id: doc.id,
         });
       });
+      eventsArr.shift()
       setEventsData(eventsArr);
     });
+    
     return () => unsubscribe();
   }, []);
   // Update events in firebase
@@ -60,6 +85,8 @@ const App: React.FC = () => {
           path="/event/:eventId"
           element={<EventInfo events={eventsData} />}
         ></Route>
+        {/* <Route path="/user/:userId" element={<UserInfo users={mockData} />}></Route> */}
+
         <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />

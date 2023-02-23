@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Event = (props: {
-  id?: number;
+  id?: number | string;
   title?: string;
   time?: string;
   date?: string;

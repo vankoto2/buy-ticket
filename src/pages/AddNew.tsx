@@ -1,5 +1,7 @@
+import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { db } from "../firebase";
 
 const AddNew = () => {
   const [title, setName] = useState("");
@@ -9,14 +11,20 @@ const AddNew = () => {
   const [category, setCategory] = useState("Concert");
   const [price, setPrice] = useState("");
   const [ticketСeller, setТicketСeller] = useState(String);
+  const [picture, setPicture] = useState(String);
 
   const navigate = useNavigate();
   const [isPendig, setIsPendig] = useState(false);
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const blog = {
+    const blog = {};
+
+    setIsPendig(true);
+    console.log(blog);
+
+    await addDoc(collection(db, "events"), {
       key: Math.random(),
       title,
       date,
@@ -25,19 +33,9 @@ const AddNew = () => {
       category,
       price: +price,
       ticketСeller,
-    };
-
-    // setIsPendig(true);
-
-    console.log(blog);
-
-    // fetch("http://localhost:8000/blogs", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(blog),
-    // }).then(() => {
-    //   setIsPendig(false);
-    // });
+      picture,
+    });
+    setIsPendig(false);
 
     navigate("/events");
   };
@@ -133,6 +131,27 @@ const AddNew = () => {
           <div className="w-1/3">
             <label
               className="block text-gray-500 font-bold text-left mb-1 pr-4"
+              htmlFor="location"
+            >
+              Picture
+            </label>
+          </div>
+          <div className="w-2/3">
+            <input
+              required
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange"
+              id="picture"
+              type="text"
+              placeholder="event link to picture"
+              value={picture}
+              onChange={(e) => setPicture(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="flex items-center mb-6">
+          <div className="w-1/3">
+            <label
+              className="block text-gray-500 font-bold text-left mb-1 pr-4"
               htmlFor="price"
             >
               Price
@@ -140,7 +159,7 @@ const AddNew = () => {
           </div>
           <div className="w-2/3">
             <input
-              required  
+              required
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange"
               id="price"
               type="number"
@@ -179,7 +198,7 @@ const AddNew = () => {
               className="block text-gray-500 font-bold text-left mb-1 pr-4"
               htmlFor="grid-state"
             >
-              State
+              Type
             </label>
           </div>
 
