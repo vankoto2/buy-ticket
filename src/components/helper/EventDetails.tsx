@@ -5,14 +5,18 @@ import Location from "../../svg/location-svgrepo-com.svg";
 import Price from "../../svg/usd-icon.svg";
 
 const EventDetails = (props: {
-  id: number;
-  title: string;
-  time: string;
-  date: string;
-  picture: string;
-  price: number;
-  location: string;
+  id?: number;
+  title?: string;
+  time?: string;
+  date?: string;
+  picture?: string;
+  price?: number;
+  location?: string;
+  user?: string;
+  ticketСeller?: string; 
 }) => {
+  console.log(props);
+  
   return (
     <div className="container md:flex xl:flex justify-center">
       <div

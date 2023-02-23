@@ -6,14 +6,15 @@ import EventDetails from "../components/helper/EventDetails";
 
 const EventInfo = (props: {
   events: {
-    id: number;
-    title: string;
-    time: string;
-    date: string;
-    picture: string;
-    price: number;
-    location: string;
-    user: string;
+    id?: number;
+    title?: string;
+    time?: string;
+    date?: string;
+    picture?: string;
+    price?: number;
+    location?: string;
+    user?: string;
+    ticketСeller?: string; 
   }[];
 }) => {
   // const [isChat, setIsChat] = useState(true);
@@ -23,6 +24,8 @@ const EventInfo = (props: {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+  console.log(props);
+  
 
   return (
     <>

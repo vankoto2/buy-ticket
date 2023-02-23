@@ -4,15 +4,15 @@ import Event from "../components/helper/Event";
 
 interface EventsListProps {
   events: {
-    id: number;
-    title: string;
-    time: string;
-    date: string;
-    picture: string;
-    price: number;
-    location: string;
-    user: string;
-    ticketСeller: string;
+    id?: number;
+    title?: string;
+    time?: string;
+    date?: string;
+    picture?: string;
+    price?: number;
+    location?: string;
+    user?: string;
+    ticketСeller?: string;
   }[];
 }
 

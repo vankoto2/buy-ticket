@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Event = (props: {
-  id: number;
-  title: string;
-  time: string;
-  date: string;
-  picture: string;
-  price: number;
-  location: string;
-  user: string;
-  ticketСeller: string;
+  id?: number;
+  title?: string;
+  time?: string;
+  date?: string;
+  picture?: string;
+  price?: number;
+  location?: string;
+  user?: string;
+  ticketСeller?: string;
 }) => {
   return (
     <div key={props.id} className="grid place-items-center px-4 pt-4 pb-10">
